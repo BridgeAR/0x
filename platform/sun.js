@@ -80,7 +80,7 @@ function sun (args, sudo, binary, cb) {
   else status('Profiling')
 
   start()
-  
+
   if (onPort) when(proc.stdio[5], 'data').then((port) => {
     const whenPort = spawnOnPort(onPort, port)
     whenPort.then(() => proc.kill('SIGINT'))
@@ -137,7 +137,7 @@ function sun (args, sudo, binary, cb) {
         }
         return
       }
-      
+
       translate = translate || sym({silent: true, pid: proc.pid})
 
       if (!translate) {

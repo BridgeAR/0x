@@ -13,7 +13,7 @@ const { version } = require('./package.json')
 
 const defaultBanner = `
   0x ${version}
-  
+
   0x [flags] -- node [nodeFlags] script.js [scriptFlags]
 
 `

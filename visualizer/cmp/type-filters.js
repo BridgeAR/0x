@@ -3,8 +3,8 @@
 const createHoc = (render) => ({bg, exclude, name, lbl, disabled = false}, action) => {
   const pressed = !disabled && !exclude.has(name)
   return render`
-    <button 
-      class="f7 pointer br2 ba mb0 dib black-70 lh-title border-box ml1 ${pressed ? 'b--black' : ''} ${disabled ? 'o-50 gray' : ''}" 
+    <button
+      class="f7 pointer br2 ba mb0 dib black-70 lh-title border-box ml1 ${pressed ? 'b--black' : ''} ${disabled ? 'o-50 gray' : ''}"
       ${disabled ? 'disabled' : ''}
       style="
         ${pressed ? 'box-shadow: 0 0 0 1px black;' : ''}

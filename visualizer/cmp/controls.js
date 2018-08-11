@@ -7,7 +7,7 @@ const button = (render) => ({label, pressed, disabled, width}, action) => render
     style="
       ${pressed ? 'box-shadow: 0 0 0 .125em black;' : ''}
       ${width ? 'width: ' + width + ';' : ''}
-    " 
+    "
     onclick=${action}
   >
     ${label}

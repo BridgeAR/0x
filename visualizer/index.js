@@ -11,15 +11,15 @@ const ui = require('./cmp/ui')(render)
 module.exports = function (trees, opts) {
   opts = opts || {}
   const { kernelTracing } = opts
-  const exclude = new Set(['cpp', 'regexp', 'v8', 'native', 'init'])
+  const exclude = ['cpp', 'regexp', 'v8', 'native', 'init']
 
   const chart = graph()
   const tree = trees.unmerged // default view
   const categorizer = !kernelTracing && graph.v8cats
   const flamegraph = fg({
-    categorizer, 
-    tree, 
-    exclude: Array.from(exclude), 
+    categorizer,
+    tree,
+    exclude,
     element: chart
   })
   const { colors } = flamegraph
@@ -30,7 +30,7 @@ module.exports = function (trees, opts) {
     chart.querySelector('svg').setAttribute('width', width)
   }, 150))
 
-  const state = createState({colors, trees, exclude, kernelTracing, title: opts.title})
+  const state = createState({colors, trees, exclude: new Set(exclude), kernelTracing, title: opts.title})
 
   const actions = createActions({flamegraph, state}, (state) => {
     morphdom(iface, ui({state, actions}))
